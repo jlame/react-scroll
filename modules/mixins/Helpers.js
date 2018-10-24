@@ -19,7 +19,7 @@ const protoTypes = {
   spy: PropTypes.bool,
   smooth: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   offset: PropTypes.number,
-  spyOffset: React.PropTypes.number,
+  spyOffset: PropTypes.number,
   delay: PropTypes.number,
   isDynamic: PropTypes.bool,
   onClick: PropTypes.func,
