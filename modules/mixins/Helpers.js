@@ -19,6 +19,7 @@ const protoTypes = {
   spy: PropTypes.bool,
   smooth: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   offset: PropTypes.number,
+  spyOffset: React.PropTypes.number,
   delay: PropTypes.number,
   isDynamic: PropTypes.bool,
   onClick: PropTypes.func,
@@ -110,8 +111,8 @@ const Helpers = {
           elemTopBound = (cords.top - containerTop + y);
           elemBottomBound = elemTopBound + cords.height;
         }
-
-        let offsetY = y - this.props.offset;
+        let offset = this.props.spyOffset !== 0 ? this.props.spyOffset : this.props.offset;
+        let offsetY = y - offset;
         let isInside = (offsetY >= Math.floor(elemTopBound) && offsetY < Math.floor(elemBottomBound));
         let isOutside = (offsetY < Math.floor(elemTopBound) || offsetY >= Math.floor(elemBottomBound));
         let activeLink = scroller.getActiveLink();
@@ -217,7 +218,7 @@ const Helpers = {
 
     Scroll.propTypes = protoTypes;
 
-    Scroll.defaultProps = { offset: 0 };
+    Scroll.defaultProps = { offset: 0, spyOffset: 0 };
 
     return Scroll;
   },
